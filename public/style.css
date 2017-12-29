@@ -22,7 +22,7 @@ html, body {
 }
 
 .yearDiv {
-    color: gray;
+    color: black;
     width: 50%;
     margin-left: 25%;
     border-style: solid;
@@ -31,5 +31,5 @@ html, body {
 }
 
 .type-text {
-    color: gray;
+    color: black;
 }
