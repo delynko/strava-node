@@ -33,8 +33,18 @@ html, body {
 
 .type-text {
     color: gray;
+    font-size: 16px
 }
 
 .hidden {
     display: none
+}
+
+.activities-hidden {
+    display: none
+}
+
+.activity {
+    color: gray;
+    font-size: 10px
 }
