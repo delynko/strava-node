@@ -11,14 +11,12 @@ for (var i = 0; i < pages.length; i++){
         if (payload != undefined){
             if (!err) {
                 for (var x = 0; x < payload.length; x++){
-                    if (payload[x].type != "Walk"){
                         
-                        var date = new Date(payload[x].start_date_local);
-                        var year = date.getFullYear();
-                        
-                        if (years.includes(year) == false){
-                            years.push(year);
-                        }
+                    var date = new Date(payload[x].start_date_local);
+                    var year = date.getFullYear();
+                    
+                    if (years.includes(year) == false){
+                        years.push(year);
                     }
                 }
             }
