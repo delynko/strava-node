@@ -58,8 +58,8 @@ $(function(){
                 var typeTitle = document.createElement('p');
                 typeTitle.id = data[t].year + data[t].type;
                 typeTitle.className = 'type-text';
-                typeTitle.innerHTML = data[t].type;
-                typeTitle.onclick = totalToggle;
+                typeTitle.innerHTML = "<b>" + data[t].type+ "</b>";
+//                typeTitle.onclick = totalToggle;
                 typeTitle.style.cursor = 'pointer';
                 yrDv.appendChild(typeTitle);
             }
@@ -70,6 +70,7 @@ $(function(){
         
         for (var t = 0; t < data.length; t++){
             var yrTpDs = {
+                "type": data[t].type,
                 "yearType": data[t].year + data[t].type,
                 "distance": data[t].distance
             }
@@ -85,21 +86,65 @@ $(function(){
             .value();
         
         output.forEach(function(d){
+            
             var pDiv = document.getElementById(d.yearType);
             
             var totalDiv = document.createElement('div');
-            totalDiv.innerHTML = ("Distance: " + d.distance.toFixed(2));
+            totalDiv.innerHTML = (d.distance.toFixed(2) + " miles");
             totalDiv.id = d.yearType + "Distance";
-            totalDiv.className = 'hidden',
             pDiv.appendChild(totalDiv);
             
-        })
+            var activityContainer = document.createElement('div');
+            
+            activityContainer.id = d.yearType + "Activities";
+            activityContainer.innerHTML = "hover to see all";
+            activityContainer.onmouseover = activityContainerHover;
+            activityContainer.onmouseout = activityContainerUnHover;
+            
+            totalDiv.appendChild(activityContainer);
+            
+        });
+        
+        for (var a = 0; a < data.length; a++) {
+
+            var container = document.getElementById(data[a].year + data[a].type + "Activities");
+            var line = data[a].line;
+            
+            var activity = document.createElement('div');
+            activity.id = data[a].id;
+            activity.innerHTML = data[a].date + ", " + data[a].name + ", " + data[a].distance.toFixed(2) + " miles";
+            activity.className = 'activities-hidden activity';
+            activity.onclick = mapLine;
+            
+            container.appendChild(activity);
+        }
             
     });
 });
 
 function totalToggle(){
     $("#" + this.id + "Distance").toggle();
+}
+
+function activityContainerHover(){
+    $(this).children().removeClass('activities-hidden');
+}
+
+function activityContainerUnHover(){
+    $(this).children().addClass('activities-hidden');
+}
+
+function mapLine(){
+    console.log(this.id);
+    $.post("/mapLine", {
+        line: this.id
+    }, function(data, status){
+        console.log(data);
+        $.get("/mapline", function(line){
+            console.log(line);
+        })
+    });
+
 }
 
 //    for (var i = 0; i < acts.length; i++){
