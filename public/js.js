@@ -59,6 +59,8 @@ $(function(){
                 typeTitle.id = data[t].year + data[t].type;
                 typeTitle.className = 'type-text';
                 typeTitle.innerHTML = data[t].type;
+                typeTitle.onclick = totalToggle;
+                typeTitle.style.cursor = 'pointer';
                 yrDv.appendChild(typeTitle);
             }
         }
@@ -74,8 +76,6 @@ $(function(){
             yearTypeDistance.push(yrTpDs);
         }
         
-        console.log(yearTypeDistance);
-        
         var output =
             _(yearTypeDistance)
             .groupBy('yearType')
@@ -83,12 +83,24 @@ $(function(){
             'yearType': key,
             'distance': _.sumBy(objs, 'distance') }))
             .value();
-
-        console.log(output);
+        
+        output.forEach(function(d){
+            var pDiv = document.getElementById(d.yearType);
+            
+            var totalDiv = document.createElement('div');
+            totalDiv.innerHTML = ("Distance: " + d.distance.toFixed(2));
+            totalDiv.id = d.yearType + "Distance";
+            totalDiv.className = 'hidden',
+            pDiv.appendChild(totalDiv);
+            
+        })
             
     });
 });
 
+function totalToggle(){
+    $("#" + this.id + "Distance").toggle();
+}
 
 //    for (var i = 0; i < acts.length; i++){
 //
