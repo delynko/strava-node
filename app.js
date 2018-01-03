@@ -24,6 +24,14 @@ app.get("/years", function(req, res){
     res.send(years);
 });
 
+app.post("/mapLine", function(req, res){
+    res.send(data);
+});
+
+app.get("/mapLine", function(req, res){
+    res.send(line);
+});
+
 app.listen(3000, function(){
     console.log("Here we go...")
 });
