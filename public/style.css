@@ -33,3 +33,7 @@ html, body {
 .type-text {
     color: gray;
 }
+
+.hidden {
+    display: none
+}
