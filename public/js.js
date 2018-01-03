@@ -42,39 +42,53 @@ $(function(){
         dataType: "json"
     });
     
-    setTimeout(function(){
-        allDataRequest.done(function(data){
-        
-            var types = [];
 
-            for (var t = 0; t < data.length; t++){
+    allDataRequest.done(function(data){
 
-                var yrDv = document.getElementById('year' + data[t].year);
+        var yearTypes = [];
 
-                if (!types.includes(data[t].year + data[t].type)){
-                    types.push(data[t].year + data[t].type);
-
-                    var typeText = document.createElement('p');
-                    typeText.id = data[t].year + data[t].type;
-                    typeText.className = 'type-text';
-                    typeText.innerHTML = data[t].type;
-
-                    yrDv.appendChild(typeText);
-
-
-
-                }
+        for (var t = 0; t < data.length; t++){
+            
+            var yrDv = document.getElementById('year' + data[t].year);
+            
+            if (!yearTypes.includes(data[t].year + data[t].type)) {
+                
+                yearTypes.push(data[t].year + data[t].type);
+                
+                var typeTitle = document.createElement('p');
+                typeTitle.id = data[t].year + data[t].type;
+                typeTitle.className = 'type-text';
+                typeTitle.innerHTML = data[t].type;
+                yrDv.appendChild(typeTitle);
             }
-            console.log(data);
-        });
-    }, 1000)
-    
-    
+        }
         
         
+        var yearTypeDistance = [];
+        
+        for (var t = 0; t < data.length; t++){
+            var yrTpDs = {
+                "yearType": data[t].year + data[t].type,
+                "distance": data[t].distance
+            }
+            yearTypeDistance.push(yrTpDs);
+        }
+        
+        console.log(yearTypeDistance);
+        
+        var output =
+            _(yearTypeDistance)
+            .groupBy('yearType')
+            .map((objs, key) => ({
+            'yearType': key,
+            'distance': _.sumBy(objs, 'distance') }))
+            .value();
 
-    
+        console.log(output);
+            
+    });
 });
+
 
 //    for (var i = 0; i < acts.length; i++){
 //
