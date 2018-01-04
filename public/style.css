@@ -29,11 +29,13 @@ html, body {
     border-style: solid;
     border-width: .15px;
     padding-bottom: 5px;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .type-text {
     color: gray;
-    font-size: 16px
+    font-size: 20px;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .hidden {
@@ -46,5 +48,11 @@ html, body {
 
 .activity {
     color: gray;
-    font-size: 10px
+    font-size: 10px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.act-cont {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px
 }
