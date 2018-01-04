@@ -46,22 +46,3 @@ for (var i = 0; i < pages.length; i++){
 }
 
 module.exports = activities;
-
-    
-//    if (!err) {
-//        for (var i = 0; i < payload.length; i++){
-//            if (payload[i].type == "Ride"){
-//                var newLine = polyline.decode(payload[i].map.summary_polyline);
-//                var newNewLine = [];
-//                for (var x = 0; x < newLine.length; x++){
-//                    var lon = newLine[x][1];
-//                    var lat = newLine[x][0];
-//                    newNewLine.push([lon, lat]);
-//
-//                }
-//                lines.push(newNewLine);
-//            }
-//        }
-//    } else {
-//        console.log(err);
-//    }
