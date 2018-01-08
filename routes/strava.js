@@ -8,6 +8,9 @@ var pages = [1, 2, 3, 4, 5];
 
 for (var i = 0; i < pages.length; i++){
     
+    // k = 696d2b68a52f1c062022a6ad76644400c60a4f98
+    // e = 9692c0d85d42b0be565e2c5964ae3fd22a78adb2
+    
     strava.athlete.listActivities({access_token: "9692c0d85d42b0be565e2c5964ae3fd22a78adb2", page: pages[i], per_page: 200}, function(err, payload, limits){
     
         if (payload != undefined){
