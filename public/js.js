@@ -34,7 +34,7 @@ $(function(){
                 yearDiv.className = 'yearDiv';
                 yearDiv.innerHTML = '<h1>' + yearOrder[i] + '</h1>'
                 
-                allYearsDiv.appendChild(yearDiv);
+                allYearsDiv.prepend(yearDiv);
                 
             }
         });
