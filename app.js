@@ -6,6 +6,7 @@ var data = require("./routes/strava.js");
 var years = require("./routes/years.js");
 
 var app = express();
+var port = process.env.PORT || 3000;
 
 app.use(express.static(path.resolve(__dirname, "public")));
 
@@ -24,6 +25,6 @@ app.get("/years", function(req, res){
     res.send(years);
 });
 
-app.listen(3000, function(){
+app.listen(port, function(){
     console.log("Here we go...")
 });
