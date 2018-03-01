@@ -26,7 +26,6 @@ $(function(){
         });
         
         yearRequest.done(function(years){
-            
             var yearOrder = years.sort();
             for (var i = 0; i < yearOrder.length; i++){
                 var yearDiv = document.createElement('div');
@@ -53,7 +52,7 @@ $(function(){
                 var yrDv = document.getElementById('year' + data[t].year);
                 
                 if (!yearTypes.includes(data[t].year + data[t].type)) {
-                    
+                                        
                     yearTypes.push(data[t].year + data[t].type);
                     
                     var typeTitle = document.createElement('p');

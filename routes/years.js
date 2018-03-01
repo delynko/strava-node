@@ -7,7 +7,7 @@ var pages = [1, 2, 3, 4, 5];
 
 for (var i = 0; i < pages.length; i++){
     
-    strava.athlete.listActivities({access_token: "9692c0d85d42b0be565e2c5964ae3fd22a78adb2", page: pages[i], per_page: 200}, function(err, payload, limits){
+    strava.athlete.listActivities({access_token: process.env.ACCESS_TOKEN, page: pages[i], per_page: 200}, function(err, payload, limits){
         if (payload != undefined){
             if (!err) {
                 for (var x = 0; x < payload.length; x++){
